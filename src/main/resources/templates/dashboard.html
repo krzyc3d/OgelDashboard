@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OgelDashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<h2>Dashboard </h2>
+
+<div  id="container">
+<form>
+    <div>
+    <span  class="label label-success" style="color: #464830">machine1</span>
+
+        <h1 th:if="${machine4x2coreTemp >100}" > fatal</h1>
+        <h3 th:if="${machine4x2coreTemp >85} and ${machine4x2coreTemp < 100}" > warning</h3>
+        <h5 th:if="${machine4x2coreTemp <85}" > soo good</h5>
+    </div>
+
+    <div>
+        <label for="netProductionMachine4x2">Net production Machine4x2</label>
+        <td><input type="text" class="form-control" id="netProductionMachine4x2" th:value="*{machine4x2netProduction}"/></td>
+        <label for="scrapProcentageMachine4x2">Scrap Procentage Machine4x2</label>
+        <td><input type="text" class="form-control" id="scrapProcentageMachine4x2" th:value="*{machine4x2scrapProcentage}"/></td>
+
+    </div>
+
+    <div>
+        <span  class="label label-success" style="color: #464830">machine2</span>
+
+        <h1 th:if="${machine3x2coreTemp >100}" > fatal</h1>
+        <h3 th:if="${machine3x2coreTemp >85} and ${machine3x2coreTemp < 100}" > warning</h3>
+        <h5 th:if="${machine3x2coreTemp <85}" > soo good</h5>
+    </div>
+    <div><label for="netProductionMachine3x2">Net production Machine3x2</label>
+        <td><input type="text" class="form-control" id="netProductionMachine3x2" th:value="*{machine3x2netProduction}"/></td>
+        <label for="scrapProcentageMachine3x2">Scrap Procentage Machine3x2</label>
+        <td><input type="text" class="form-control" id="scrapProcentageMachine3x2" th:value="*{machine3x2scrapProcentage}"/></td>
+    </div>
+
+    <div>
+        <span  class="label label-success" style="color: #464830">machine3</span>
+
+        <h1 th:if="${machine2x2coreTemp >100}" > fatal</h1>
+        <h3 th:if="${machine2x2coreTemp >85} and ${machine2x2coreTemp < 100}" > warning</h3>
+        <h5 th:if="${machine2x2coreTemp <85}" > soo good</h5>
+    </div>
+    <div>
+        <label for="netProductionMachine2x2">Net production Machine 2x2</label>
+        <td><input type="text" class="form-control" id="netProductionMachine2x2" th:value="*{machine2x2netProduction}"/></td>
+        <label for="scrapProcentageMachine2x2">Scrap Procentage Machine 2x2</label>
+        <td><input type="text" class="form-control" id="scrapProcentageMachine2x2" th:value="*{machine2x2scrapProcentage}"/></td>
+    </div>
+</form>
+
+<!--<form>-->
+        <!--<label for="productionDate">Start</label>-->
+        <!--<input type="date" name="productionDate" th:field="*{productionDate}" th:min="${min}" th:max="${max}" id="productionDate">-->
+        <!--<button type="submit" class="myBtn btn btn-primary ">Change date</button>-->
+    <!--</form>-->
+</div>
+<div class="container">
+    <table class ="table">
+           <thead>
+           <th>Machine Name</th>
+           <th>Time</th>
+           <th>Production</th>
+           </thead>
+    <tbody>
+        <tr  th:each="brick:${mapOfProduction}">
+
+            <td th:text="${brick.machine_Name}">Machine Name </td>
+            <td th:text="${brick.key}">Time [h]</td>
+            <td th:text="${brick.value}">Value </td>
+
+        </tr>
+    </tbody>
+    </table>
+</div>
+</body>
+</html>
